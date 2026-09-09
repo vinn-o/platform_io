@@ -27,3 +27,6 @@ void setup(){
   xTaskCreate(printTASK, "SERIAL", 1000, NULL , 1, NULL);
 }
 
+void loop(){
+  
+}
