@@ -16,3 +16,14 @@ void printTask( *parameter){
     Serial.println("Hello");
     vTaskDelay(1000,, portTICK_PERIOD_MS);
   }
+
+
+
+void setup(){
+  Serial.begin(115200);
+  pinMode(led1, OUTPUT);
+
+  xTaskCreate(LedTask, "LED", 1000, NULL , 1, NULL);
+  xTaskCreate(printTASK, "SERIAL", 1000, NULL , 1, NULL);
+}
+
