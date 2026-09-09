@@ -2,8 +2,8 @@
 
 int led1 = 2; //pin where buildin LED is connected to
 
-void LedTask( *parameter){
-  ledstate = LOW;
+void LedTask(void *parameter){
+  bool ledstate = LOW;
   while(true){
     ledstate = !ledstate;                        //task for led
     digitalWrite(led1, ledstate);
@@ -11,12 +11,12 @@ void LedTask( *parameter){
   }
 }
 
-void printTask( *parameter){
+void printTask(void *parameter){
   while(true){
     Serial.println("Hello");
-    vTaskDelay(1000,, portTICK_PERIOD_MS);
+    vTaskDelay(1000 / portTICK_PERIOD_MS);
   }
-
+}
 
 
 void setup(){
@@ -24,9 +24,9 @@ void setup(){
   pinMode(led1, OUTPUT);
 
   xTaskCreate(LedTask, "LED", 1000, NULL , 1, NULL);
-  xTaskCreate(printTASK, "SERIAL", 1000, NULL , 1, NULL);
+  xTaskCreate(printTask, "SERIAL", 1000, NULL , 1, NULL);
 }
 
 void loop(){
-  
+
 }
