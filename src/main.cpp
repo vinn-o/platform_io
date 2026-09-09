@@ -11,3 +11,8 @@ void LedTask( *parameter){
   }
 }
 
+void printTask( *parameter){
+  while(true){
+    Serial.println("Hello");
+    vTaskDelay(1000,, portTICK_PERIOD_MS);
+  }
